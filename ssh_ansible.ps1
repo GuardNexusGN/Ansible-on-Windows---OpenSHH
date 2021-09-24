@@ -1,11 +1,15 @@
-#OpenSSH feature on windows
+##############################
+# OpenSSH feature on windows #
+##############################
 Add-WindowsCapability –Online –Name OpenSSH.Server~~~~0.0.1.0
 Set-Service sshd –StartupType Automatic
 Start-Service sshd
-New-ItemProperty –Path "HKLM:\SOFTWARE\OpenSSH" –Name DefaultShell –Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" –PropertyType String –Force
-Restart-Service sshd
+#New-ItemProperty –Path "HKLM:\SOFTWARE\OpenSSH" –Name DefaultShell –Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" –PropertyType String –Force #for convenient
+#Restart-Service sshd
 
-#ansible user and key
+################
+# Ansible user #
+################
 $length = 12
 $nonAlphaChars = 6
 Add-Type –AssemblyName 'System.Web'
@@ -19,8 +23,11 @@ $newPass = ([System.Web.Security.Membership]::GeneratePassword($length, $nonAlph
 $newSecureString = ConvertTo-SecureString $newPass –AsPlainText –Force
 Set-LocalUser –Name $user –Password $newSecureString
 New-Item –Path "C:\Users\$user" –Name ".ssh" –ItemType Directory
-$content = "PASTE YOUR PUBLIC SSH KEY HERE"
-$content | Set-Content –Path "c:\users\$user\.ssh\authorized_keys"
+Add-LocalGroupMember -Group "Administrators" -Member $user
+#$content = "PUBLIC SSH KEY HERE" #can be used, passed key in add. line command
+#$content | Set-Content –Path "c:\users\$user\.ssh\authorized_keys" #can be used, passed key in add. line command
 
-#Firewall rule
+#################
+# Firewall rule #
+#################
 New-NetFirewallRule -DisplayName 'OpenSSH' -Direction Inbound -Action Allow -Protocol TCP -LocalPort 22
