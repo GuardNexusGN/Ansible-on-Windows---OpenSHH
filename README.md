@@ -1,4 +1,4 @@
-<h1>Ansbile on Windows machines<h1>
+<h1>Ansible on Windows machines</h1>
 
 <h3>Ansible through OpenSSH usage (private+public key):</h3>
 ```
@@ -11,8 +11,6 @@
 (gc C:\ProgramData\ssh\sshd_config) -replace "#PasswordAuthentication no", "PasswordAuthentication no" | sc C:\ProgramData\ssh\sshd_config
 Restart-Service sshd
 ```
-
-#####################################################
 
 <h3>Ansible through WinRM usage (windows account password):</h3>
 ```
