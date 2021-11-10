@@ -19,3 +19,9 @@
     (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/winrm.ps1','winrm.ps1')
     ./winrm.ps1
     net user ansible 'SECURE PASSWORD'
+
+<h3>Ansible through WinRM usage (windows account password):</h3>
+
+    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/winrm.ps1','winrm.ps1')
+    ./winrm.ps1
+    net user ansible 'SECURE PASSWORD'
