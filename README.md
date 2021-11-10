@@ -19,9 +19,9 @@
     (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/winrm.ps1','winrm.ps1')
     ./winrm.ps1
     net user ansible 'SECURE PASSWORD'
+    Add-LocalGroupMember -Group "Administrators" -Member ansible
 
-<h3>Ansible through WinRM usage (windows account password):</h3>
+<h3>Usefull powershell commands for old Windows Servers (Feature/TLS errors) (paste on the beggining):</h3>
 
-    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/winrm.ps1','winrm.ps1')
-    ./winrm.ps1
-    net user ansible 'SECURE PASSWORD'
+    Import-Module DISM
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
