@@ -2,7 +2,7 @@
 
 <h3>Ansible through OpenSSH (private+public key):</h3>
 
-    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/ssh_ansible.ps1','ssh_ansible.ps1')
+    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible_on_Windows_OpenSHH-WinRM/main/ssh_ansible.ps1','ssh_ansible.ps1')
     ./ssh_ansible.ps1
     echo 'PUB KEY' > C:/Users/ansible/.ssh/authorized_keys
 
@@ -22,7 +22,7 @@
 
 <h3>Ansible through WinRM (windows account password):</h3>
 
-    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible-on-Windows-OpenSHH/main/winrm.ps1','winrm.ps1')
+    (new-object net.webclient).DownloadFile('https://raw.githubusercontent.com/GuardNexusGN/Ansible_on_Windows_OpenSHH-WinRM/main/winrm.ps1','winrm.ps1')
     ./winrm.ps1
     net user ansible 'SECURE PASSWORD'
     Add-LocalGroupMember -Group "Administrators" -Member ansible
